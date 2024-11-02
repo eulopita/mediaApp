@@ -1,0 +1,35 @@
+<form class="example-container" [formGroup]="formExam" (submit)="operate()">    
+
+    <mat-form-field>
+        <mat-label>Name Exam</mat-label>
+        <input matInput formControlName="nameExam">
+        @if (f['nameExam'].errors?.['required'] && f['nameExam'].touched) {
+            <small class="invalid">Is required</small>
+        }
+        @if (f['nameExam'].errors?.['maxLength'] && f['nameExam'].touched) {
+            <small class="invalid">MaxLength is 50</small>
+        }        
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Description Exam</mat-label>
+        <textarea matInput formControlName="descriptionExam"></textarea>
+        @if (f['descriptionExam'].errors?.['required'] && f['descriptionExam'].touched) {
+            <small class="invalid">Is required</small>
+        }
+        @if (f['descriptionExam'].errors?.['maxLength'] && f['descriptionExam'].touched) {
+            <small class="invalid">MaxLength is 150</small>
+        }    
+    </mat-form-field>   
+
+    <button mat-button type="submit" [disabled]="formExam.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-button type="button" color="warn" routerLink="/pages/exam">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+
+</form>
